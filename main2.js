@@ -1,4 +1,4 @@
-// Funcion constructora
+/* // Funcion constructora
 class Producto {
     constructor (nombre, precio, stock, id, img){
         this.nombre= nombre.toUpperCase ()
@@ -21,10 +21,56 @@ listaDeProductos.push  (new Producto ("Limpia pisos", 200, 35, 3, "./img/8mClass
  
 //Carrito de compras
 const carrito = []
-console.log(carrito);
+console.log(carrito); */
 
 
-// Crea los productos del Array en el HTML 
+
+const URLJSON = "./productos.json"
+
+$("body").prepend('<button id="btn1">Mostrar articulos</button>');
+
+$("#btn1").click(() => { 
+$.getJSON(URLJSON, function (respuesta, estado) {
+    if(estado === "success"){
+      let listadeproductos = respuesta;
+      for (const producto of listadeproductos) {
+        $("body").prepend(` 
+                            <div>
+                            <h3> ${producto.nombre} </h3>
+                            <img src="${producto.img}" width="200px" height="200px"></img>
+                            <p> Precio: ${producto.precio} </p>                   
+                            <button class="btn" id="${producto.id}">Comprar</button>
+                            </div>`
+                            )
+                        } 
+                        let botones =document.getElementById("local")
+                        botones.addEventListener ("click", agregar)  
+                        function agregar (e){
+                            if(e.target.classList.contains("btn")){
+                            let comprado =  listaDeProductos.find(producto => producto.id == e.target.id)
+                            carrito.push(comprado)  
+                        
+                            for (const compraste1 of carrito){
+                            tienda.innerHTML = " "
+                            let compraste = document.createElement ("div")
+                            compraste.innerHTML += `<p> Agregaste un articulos al carrito ${compraste1.nombre} </p>`
+                            tienda.appendChild(compraste)
+                                }
+                        }}   
+                     }
+
+
+
+
+
+            }     )
+}       )
+
+
+
+
+
+/* // Crea los productos del Array en el HTML 
 for(const producto of listaDeProductos){
   let articulo = document.createElement('div')
   articulo.innerHTML += `<h3> ${producto.nombre} </h3>
@@ -40,7 +86,7 @@ for(const producto of listaDeProductos){
 
 
 
-// Funcion sumar los precios de los articulos del carrito (todavia nose como hacerlo)
+
 let botones =document.getElementById("local")
 botones.addEventListener ("click", agregar)
         
@@ -59,3 +105,5 @@ function agregar (e){
     tienda.appendChild(compraste)
         }
 }}    
+
+ */

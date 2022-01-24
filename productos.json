@@ -1,0 +1,29 @@
+[
+    {
+        "id":1,
+        "nombre":"Escoba",
+        "precio":500,
+        "img":"./img/escobaAmerimaxPlastica.jpg"
+    
+    },
+    {
+        "id":2,
+        "nombre":"Plumeros",
+        "precio":600,
+        "img":"./img/plumero-negro-especial-n-50.jpg"
+    
+    },
+    {
+        "id":3,
+        "nombre":"Limpia pisos",
+        "precio":200,
+        "img":"./img/8mClassicX5Lts(diversey).jpg"
+    
+    }
+
+
+
+
+
+
+]
